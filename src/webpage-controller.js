@@ -1,4 +1,3 @@
-// import { Todo } from "./todo.js";
 import { Project } from "./project.js";
 
 export const WebpageController = {
@@ -17,8 +16,11 @@ export const WebpageController = {
         sidebar.innerHTML = "";
 
         this.projects.forEach(project => {
+            // let projectButton = document.createElement("button");
             let projectDiv = document.createElement("div");
 
+            // projectButton.innerText = project.name;
+            // projectButton.addEventListener("onclick", project.updateMainContent);
             projectDiv.innerText = project.name;
 
             // sidebar.appendChild(projectDiv.toDOM());
