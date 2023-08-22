@@ -8,23 +8,21 @@ export const WebpageController = {
         let defaultProject = Project.new();
 
         controller.projects = [defaultProject];
-        controller.focusIndex = 0;
 
         return controller;
     },
     initPage: function() {
-        document.body.innerHTML = "";
+        const sidebar = document.querySelector(".projects-sidebar");
 
-        const projectsMain = document.createElement("main");
+        sidebar.innerHTML = "";
 
         this.projects.forEach(project => {
             let projectDiv = document.createElement("div");
 
-            projectDiv.innerText = project;
+            projectDiv.innerText = project.name;
 
-            projectsMain.appendChild(projectDiv);
+            // sidebar.appendChild(projectDiv.toDOM());
+            sidebar.appendChild(projectDiv);
         });
-
-        document.body.appendChild(projectsMain);
     }
 };
