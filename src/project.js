@@ -6,5 +6,8 @@ export const Project = {
         project.todos = [];
 
         return project;
+    },
+    push: function(todo) {
+        this.todos.push(todo);
     }
 };
