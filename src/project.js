@@ -4,5 +4,7 @@ export const Project = {
 
         project.name = name;
         project.todos = [];
+
+        return project;
     }
 };
