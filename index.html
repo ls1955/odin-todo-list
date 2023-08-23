@@ -7,8 +7,41 @@
 </head>
 <body>
   <header><button>Create a new todo</button></header>
+
+  <dialog class="create-todo-dialog">
+    <form>
+      <h1>Create a new todo</h1>
+      <p>
+        <label>
+          Title: <input type="text" required>
+        </label>
+      </p>
+      <p>
+        <label>
+          Description: <input type="text" required>
+        </label>
+      </p>
+      <p>
+        <label>
+          Due date: <input type="date" required>
+        </label>
+      </p>
+      <p>
+        <label>
+          Priority (Scale of 1 to 3): <input type="number" min="1" max="3" value="1" required>
+        </label>
+      </p>
+      <div class="buttons-container">
+        <button value="cancel">Cancel</button>
+        <button value="default">Create</button>
+      </div>
+    </form>
+  </dialog>
+
   <aside class="projects-sidebar"></aside>
+
   <main class="todo-list-container"></main>
+
   <script src="main.js"></script>
 </body>
 </html>
