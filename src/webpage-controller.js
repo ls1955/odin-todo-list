@@ -22,12 +22,9 @@ export const WebpageController = {
         const sidebar = document.querySelector(".projects-sidebar");
 
         this.projects.forEach((project, index) => {
-            let projectButton = document.createElement("button");
+            let projectButton = project.toButton();
+
             projectButton.dataset.index = index;
-
-            projectButton.innerText = project.name;
-            projectButton.addEventListener("click", () => project.updateMainContent());
-
             sidebar.appendChild(projectButton);
         });
     }

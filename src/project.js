@@ -25,5 +25,13 @@ export const Project = {
         });
 
         main.appendChild(ul);
+    },
+    toButton: function() {
+        const button = document.createElement("button");
+
+        button.innerText = this.name;
+        button.addEventListener("click", () => this.updateMainContent());
+
+        return button;
     }
 };
