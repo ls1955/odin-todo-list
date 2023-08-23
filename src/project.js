@@ -1,9 +1,9 @@
 export const Project = {
-    new: function(name) {
+    new: function(name, todos = []) {
         const project = Object.create(this);
 
         project.name = name;
-        project.todos = [];
+        project.todos = todos;
 
         return project;
     },
