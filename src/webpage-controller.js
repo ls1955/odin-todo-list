@@ -21,8 +21,9 @@ export const WebpageController = {
     initPage: function() {
         const sidebar = document.querySelector(".projects-sidebar");
 
-        this.projects.forEach(project => {
+        this.projects.forEach((project, index) => {
             let projectButton = document.createElement("button");
+            projectButton.dataset.index = index;
 
             projectButton.innerText = project.name;
             projectButton.addEventListener("click", () => project.updateMainContent());
