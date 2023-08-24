@@ -8,6 +8,7 @@ export const DialogController = {
         ctrller.projects = projects;
         ctrller.showBtn = document.querySelector(".show-create-todo-dialog-button");
         ctrller.dialog = dialog;
+        ctrller.form = dialog.querySelector("form");
         ctrller.cancelBtn = dialog.querySelector(".cancel-button");
         ctrller.createBtn = dialog.querySelector(".create-button");
         ctrller.titleInput = dialog.querySelector(".title-input");
@@ -16,7 +17,10 @@ export const DialogController = {
         ctrller.priorityInput = dialog.querySelector(".priority-input");
 
         ctrller.showBtn.addEventListener("click", () => ctrller.dialog.show());
-        ctrller.cancelBtn.addEventListener("click", () => ctrller.dialog.close());
+        ctrller.cancelBtn.addEventListener("click", () => {
+            ctrller.form.reset();
+            ctrller.dialog.close()
+        });
         ctrller.createBtn.addEventListener("click", (e) => {
             e.preventDefault();
             ctrller.createAndInsertTodo();
@@ -36,8 +40,7 @@ export const DialogController = {
         this.projects[index].push(todo);
         this.projects[index].updateMainContent();
 
-        // TODO: reset the input before closing the dialog
-
+        this.form.reset();
         this.dialog.close();
     }
 };
