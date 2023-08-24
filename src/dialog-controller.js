@@ -1,17 +1,22 @@
 export const DialogController = {
     new: function() {
         const ctrller = Object.create(this);
+        const dialog = document.querySelector(".create-todo-dialog");
 
-        ctrller.showButton = document.querySelector(".show-create-todo-dialog-button");
-        ctrller.dialog = document.querySelector(".create-todo-dialog");
-        ctrller.inputs = ctrller.dialog.querySelectorAll("input");
-        ctrller.cancelButton = ctrller.dialog.querySelector(".cancel-button");
-        ctrller.createButton = ctrller.dialog.querySelector(".create-button");
+        ctrller.showBtn = document.querySelector(".show-create-todo-dialog-button");
+        ctrller.dialog = dialog;
+        ctrller.cancelBtn = dialog.querySelector(".cancel-button");
+        ctrller.createBtn = dialog.querySelector(".create-button");
+        ctrller.titleInput = dialog.querySelector(".title-input");
+        ctrller.descriptionInput = dialog.querySelector(".description-input");
+        ctrller.dateInput = dialog.querySelector(".date-input");
+        ctrller.priorityInput = dialog.querySelector(".priority-input");
 
-        ctrller.showButton.addEventListener("click", () => ctrller.dialog.show());
-        ctrller.cancelButton.addEventListener("click", () => ctrller.dialog.close());
-        ctrller.createButton.addEventListener("click", () => {
-            console.log("Should create and insert dialog into the project");
+        ctrller.showBtn.addEventListener("click", () => ctrller.dialog.show());
+        ctrller.cancelBtn.addEventListener("click", () => ctrller.dialog.close());
+        ctrller.createBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            ctrller.createAndInsertTodo();
         });
 
         return ctrller;
