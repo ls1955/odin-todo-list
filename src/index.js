@@ -1,7 +1,7 @@
 import { DialogController } from "./dialog-controller.js";
 import { Project } from "./project.js";
+import { SidebarController } from "./sidebar-controller.js";
 import { Todo } from "./todo.js";
-import { WebpageController } from "./webpage-controller.js";
 
 let todoOne = Todo.new("Eat breakfast", "Eat some breakfast to begin the day", Date.now(), 3);
 let todoTwo = Todo.new("Study", "Study", Date.now(), 3);
@@ -13,9 +13,10 @@ let projectTwo = Project.new("The Euler Project");
 
 let projects = [defaultProject, projectOne, projectTwo];
 
-let pageController = WebpageController.new(projects);
+let sidebarController = SidebarController.new(projects);
 let dialogController = DialogController.new(projects);
-pageController.initPage();
+
+sidebarController.populateSidebar();
 
 // Select and click first project button to update main content and update current project index
 document.querySelector(".projects-sidebar").querySelector("button").click();
