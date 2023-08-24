@@ -1,9 +1,23 @@
-import { WebpageController } from "./webpage-controller.js";
 import { DialogController } from "./dialog-controller.js";
+import { Project } from "./project.js";
+import { Todo } from "./todo.js";
+import { WebpageController } from "./webpage-controller.js";
 
-let pageController = WebpageController.new();
+let todoOne = Todo.new("Eat breakfast", "Eat some breakfast to begin the day", Date.now(), 3);
+let todoTwo = Todo.new("Study", "Study", Date.now(), 3);
+let todoThree = Todo.new("Complete this project", "Complete this beautiful project.", Date.now(), 1);
+
+let defaultProject = Project.new("Default Project", [todoOne, todoTwo]);
+let projectOne = Project.new("The Odin Project", [todoThree]);
+let projectTwo = Project.new("The Euler Project");
+
+let projects = [defaultProject, projectOne, projectTwo];
+
+let pageController = WebpageController.new(projects);
 pageController.initPage();
 let dialogController = DialogController.new();
+
+defaultProject.updateMainContent();
 
 
 // TODO:
