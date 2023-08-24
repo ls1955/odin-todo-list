@@ -17,7 +17,7 @@ export const Project = {
 
         main.innerHTML = "";
         // Let others know which project should new todo insert into
-        indexHolder.dataset.currentIndex = this.index;
+        indexHolder.dataset.index = this.index;
 
         this.todos.forEach(todo => {
             const li = document.createElement("li");
@@ -36,6 +36,7 @@ export const Project = {
 
         button.addEventListener("click", () => {
             // Button's dataset index will be assign by sidebarController
+            // Useful to know coresspond project index inside projects array
             this.index = button.dataset.index;
             this.updateMainContent();
         });
