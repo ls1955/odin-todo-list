@@ -1,9 +1,11 @@
 import { WebpageController } from "./webpage-controller.js";
+import { DialogController } from "./dialog-controller.js";
 
-let controller = WebpageController.new();
-controller.initPage();
+let pageController = WebpageController.new();
+pageController.initPage();
+let dialogController = DialogController.new();
+
 
 // TODO:
-// Include index? in projectButtons
-// Include a form/dialog to create new todo
+// Include .current-project-index-holder
 // Include a button to create new project
