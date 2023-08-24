@@ -8,8 +8,11 @@ export const WebpageController = {
         return ctrller;
     },
     initPage: function() {
+        // Make this sidebar part of the attribute?
         const sidebar = document.querySelector(".projects-sidebar");
 
+        // Move this whole stuff into another function
+        // Something like populateSidebar
         this.projects.forEach((project, index) => {
             let projectButton = project.toButton();
 
