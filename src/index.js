@@ -14,12 +14,11 @@ let projectTwo = Project.new("The Euler Project");
 let projects = [defaultProject, projectOne, projectTwo];
 
 let pageController = WebpageController.new(projects);
+let dialogController = DialogController.new(projects);
 pageController.initPage();
-let dialogController = DialogController.new();
 
-defaultProject.updateMainContent();
-
+// Select and click first project button to update main content and update current project index
+document.querySelector(".projects-sidebar").querySelector("button").click();
 
 // TODO:
-// Include .current-project-index-holder
 // Include a button to create new project
