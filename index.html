@@ -6,7 +6,7 @@
   <title>Odin Todolist</title>
 </head>
 <body>
-  <header><button>Create a new todo</button></header>
+  <header><button class="show-create-todo-dialog-button">Create a new todo</button></header>
 
   <dialog class="create-todo-dialog">
     <form>
@@ -32,8 +32,8 @@
         </label>
       </p>
       <div class="buttons-container">
-        <button value="cancel">Cancel</button>
-        <button value="default">Create</button>
+        <button class="cancel-button" value="cancel" type="button">Cancel</button>
+        <button class="create-button" value="default">Create</button>
       </div>
     </form>
   </dialog>
