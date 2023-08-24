@@ -13,7 +13,6 @@ export const WebpageController = {
         let projectTwo = Project.new("The Euler Project");
 
         defaultProject.updateMainContent();
-
         controller.projects = [defaultProject, projectOne, projectTwo];
 
         return controller;
