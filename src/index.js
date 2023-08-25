@@ -21,6 +21,3 @@ sidebarController.populateSidebar();
 // Select and click first project button to update main
 // content and update current project index
 document.querySelector(".project-button").click();
-
-// TODO:
-// Include a button to create new project
