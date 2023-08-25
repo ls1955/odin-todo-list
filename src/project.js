@@ -12,22 +12,29 @@ export const Project = {
     },
     updateMainContent: function() {
         const main = document.querySelector(".todo-list-container");
-        const ul = document.createElement("ul");
         const indexHolder = document.querySelector(".current-project-index-holder");
-
+        
         main.innerHTML = "";
         // Let others know which project should new todo insert into
         indexHolder.dataset.index = this.index;
+        
+        if (this.todos.length === 0) {
+            const message = document.createElement("p");
+            message.textContent = "This project is empty."
+            main.appendChild(message);
+        } else {
+            const ul = document.createElement("ul");
 
-        this.todos.forEach(todo => {
-            const li = document.createElement("li");
+            this.todos.forEach(todo => {
+                const li = document.createElement("li");
 
-            li.innerText = todo.title;
+                li.innerText = todo.title;
 
-            ul.appendChild(li);
-        });
+                ul.appendChild(li);
+            });
 
-        main.appendChild(ul);
+            main.appendChild(ul);
+        }
     },
     toButton: function() {
         const button = document.createElement("button");
