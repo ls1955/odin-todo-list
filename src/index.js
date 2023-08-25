@@ -18,8 +18,9 @@ let dialogController = DialogController.new(projects);
 
 sidebarController.populateSidebar();
 
-// Select and click first project button to update main content and update current project index
-document.querySelector(".projects-sidebar").querySelector("button").click();
+// Select and click first project button to update main
+// content and update current project index
+document.querySelector(".project-button").click();
 
 // TODO:
 // Include a button to create new project
