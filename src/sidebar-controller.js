@@ -1,3 +1,5 @@
+import { Project } from "./project";
+
 // A controller that handle all the event related to project sidebar
 export const SidebarController = {
     new: function(projects) {
@@ -26,7 +28,22 @@ export const SidebarController = {
         return ctrller;
     },
     createAndInsertProject: function() {
-        console.log("Testing");
+        let newProjectName = this.nameInput.value;
+
+        if (newProjectName === "") {
+            // Invalid project name, output some message with it
+            return;
+        }
+
+        if (this.projects.some(project => project.name === newProjectName )) {
+            // Same project name already exist, output some message with it;
+            return;
+        }
+
+        this.projects.push(Project.new(newProjectName));
+        // TODO: Should focus on latest project
+        this.dialog.close();
+        this.populateSidebar();
     },
     populateSidebar: function() {
         this.projects.forEach((project, index) => {
