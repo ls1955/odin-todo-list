@@ -2,12 +2,26 @@
 export const SidebarController = {
     new: function(projects) {
         const ctrller = Object.create(this);
+        const dialog = document.querySelector(".create-project-dialog");
 
         ctrller.projects = projects;
         ctrller.sidebar = document.querySelector(".projects-sidebar");
-        ctrller.button = document.querySelector(".create-project-button");
+        ctrller.dialog = dialog;
+        ctrller.form = dialog.querySelector("form");
+        ctrller.cancelBtn = dialog.querySelector(".cancel-button");
+        ctrller.createBtn = dialog.querySelector(".create-button");
+        ctrller.nameInput =dialog.querySelector("input");
+        ctrller.showDialogBtn = document.querySelector(".create-project-button");
 
-        ctrller.button.addEventListener("click", () => ctrller.createAndInsertProject());
+        ctrller.showDialogBtn.addEventListener("click", () => ctrller.dialog.show());
+        ctrller.cancelBtn.addEventListener("click", () => {
+            ctrller.form.reset();
+            ctrller.dialog.close();
+        });
+        ctrller.createBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            ctrller.createAndInsertProject();
+        });
 
         return ctrller;
     },
