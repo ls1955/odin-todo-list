@@ -7,6 +7,7 @@ export const SidebarController = {
         const dialog = document.querySelector(".create-project-dialog");
 
         ctrller.projects = projects;
+        ctrller.projectsContainer = document.querySelector(".projects-container");
         ctrller.sidebar = document.querySelector(".projects-sidebar");
         ctrller.dialog = dialog;
         ctrller.form = dialog.querySelector("form");
@@ -41,18 +42,20 @@ export const SidebarController = {
         }
 
         this.projects.push(Project.new(newProjectName));
-        // TODO: Should focus on latest project
+        // TODO: Should focus index on latest project
         this.dialog.close();
         this.populateSidebar();
     },
     populateSidebar: function() {
+        this.projectsContainer.innerHTML = "";
+
         this.projects.forEach((project, index) => {
             let projectButton = project.toButton();
 
             projectButton.dataset.index = index;
             projectButton.classList.add("project-button");
 
-            this.sidebar.appendChild(projectButton);
+            this.projectsContainer.appendChild(projectButton);
         });
     }
 };
