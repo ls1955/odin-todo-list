@@ -43,6 +43,7 @@ export const SidebarController = {
 
         this.projects.push(Project.new(newProjectName));
         // TODO: Should focus index on latest project
+        this.form.reset();
         this.dialog.close();
         this.populateSidebar();
     },
