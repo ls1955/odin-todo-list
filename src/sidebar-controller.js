@@ -53,6 +53,8 @@ export const SidebarController = {
         this.projects.forEach((project, index) => {
             let projectButton = project.toButton();
 
+            // TODO: Include a delete button for every projectButton?
+
             projectButton.dataset.index = index;
             projectButton.classList.add("project-button");
 
