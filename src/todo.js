@@ -12,7 +12,36 @@ export const Todo = {
     },
     toListItem() {
         const li = document.createElement("li");
-        li.innerText = this.title;
+
+        const projectContainer = document.createElement("div");
+        projectContainer.classList.add("project-container");
+
+        const titleP = document.createElement("p");
+        titleP.innerText = this.title;
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        // TODO: Mark this todo as done when being checked, possibly removing this todo?
+        const toggleDetailsBtn = document.createElement("button");
+        toggleDetailsBtn.innerText = "▼";
+        // TODO: Expand/hide details when clicked.
+
+        [titleP, checkbox, toggleDetailsBtn].forEach(el => projectContainer.appendChild(el));
+        li.appendChild(projectContainer);
+        
+        const descriptionLi = document.createElement("li");
+        descriptionLi.innerText = this.description;
+        const dueDateLi = document.createElement("li");
+        dueDateLi.innerText = this.dueDate;
+        const priorityLi = document.createElement("li");
+        priorityLi.innerText = this.priority;
+        
+        const detailsContainer = document.createElement("div");
+        const detailsList = document.createElement("ul");
+
+        [descriptionLi, dueDateLi, priorityLi].forEach(li => detailsList.appendChild(li));
+        detailsContainer.appendChild(detailsList);
+        li.appendChild(detailsContainer);
+
         return li;
     }
 };
