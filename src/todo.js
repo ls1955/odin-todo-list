@@ -9,5 +9,10 @@ export const Todo = {
         todo.isCompleted = false;
 
         return todo;
+    },
+    toListItem() {
+        const li = document.createElement("li");
+        li.innerText = this.title;
+        return li;
     }
 };

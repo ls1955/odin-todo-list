@@ -25,13 +25,7 @@ export const Project = {
         } else {
             const ul = document.createElement("ul");
 
-            this.todos.forEach(todo => {
-                const li = document.createElement("li");
-
-                li.innerText = todo.title;
-
-                ul.appendChild(li);
-            });
+            this.todos.forEach(todo => ul.appendChild(todo.toListItem()));
 
             main.appendChild(ul);
         }
