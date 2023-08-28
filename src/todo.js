@@ -7,6 +7,10 @@ export const Todo = {
         todo.dueDate = dueDate;
         todo.priority = priority;
         todo.isCompleted = false;
+        // Will be set by the parent later on.
+        // Useful when sending message to tell parent
+        // to remove itself when this.isCompleted
+        todo.parent = null;
 
         return todo;
     },
@@ -46,6 +50,7 @@ export const Todo = {
         checkbox.addEventListener("click", () => {
             this.isCompleted = true;
             li.style.display = "none";
+            this.parent.updateMainContent();
         });
 
         toggleDetailsBtn.addEventListener("click", () => {

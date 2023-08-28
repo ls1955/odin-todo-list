@@ -3,14 +3,20 @@ export const Project = {
         const project = Object.create(this);
 
         project.name = name;
-        project.todos = todos;
+        project.todos = [];
+        todos.forEach(todo => project.push(todo));
 
         return project;
     },
     push: function(todo) {
+        // Child will inform parent to kill
+        // itself when it time has come
+        todo.parent = this;
         this.todos.push(todo);
     },
     updateMainContent: function() {
+        this.todos = this.todos.filter(todo => !todo.isCompleted);
+
         const main = document.querySelector(".todo-list-container");
         const indexHolder = document.querySelector(".current-project-index-holder");
         
