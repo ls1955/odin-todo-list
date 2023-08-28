@@ -3,6 +3,8 @@ import { Project } from "./project.js";
 import { SidebarController } from "./sidebar-controller.js";
 import { Todo } from "./todo.js";
 
+import "./style.css";
+
 let todoOne = Todo.new("Eat breakfast", "Eat some breakfast to begin the day", Date.now(), 3);
 let todoTwo = Todo.new("Study", "Study", Date.now(), 3);
 let todoThree = Todo.new("Complete this project", "Complete this beautiful project.", Date.now(), 1);
