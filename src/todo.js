@@ -49,7 +49,6 @@ export const Todo = {
 
         checkbox.addEventListener("click", () => {
             this.isCompleted = true;
-            li.style.display = "none";
             this.parent.updateMainContent();
         });
 
