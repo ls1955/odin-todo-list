@@ -20,7 +20,6 @@ export const Todo = {
         titleP.innerText = this.title;
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
-        // TODO: Mark this todo as done when being checked, possibly removing this todo?
         const toggleDetailsBtn = document.createElement("button");
         toggleDetailsBtn.innerText = "▼";
 
@@ -43,6 +42,11 @@ export const Todo = {
         [descriptionLi, dueDateLi, priorityLi].forEach(li => detailsList.appendChild(li));
         detailsContainer.appendChild(detailsList);
         li.appendChild(detailsContainer);
+
+        checkbox.addEventListener("click", () => {
+            this.isCompleted = true;
+            li.style.display = "none";
+        });
 
         toggleDetailsBtn.addEventListener("click", () => {
             detailsContainer.style.display = detailsContainer.style.display === "block" ?
