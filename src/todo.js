@@ -23,7 +23,6 @@ export const Todo = {
         // TODO: Mark this todo as done when being checked, possibly removing this todo?
         const toggleDetailsBtn = document.createElement("button");
         toggleDetailsBtn.innerText = "▼";
-        // TODO: Expand/hide details when clicked.
 
         [titleP, checkbox, toggleDetailsBtn].forEach(el => projectContainer.appendChild(el));
         li.appendChild(projectContainer);
@@ -36,11 +35,23 @@ export const Todo = {
         priorityLi.innerText = this.priority;
         
         const detailsContainer = document.createElement("div");
+        detailsContainer.classList.add("details-container");
+        // For some reason it is "" by default
+        detailsContainer.style.display = "block";
         const detailsList = document.createElement("ul");
 
         [descriptionLi, dueDateLi, priorityLi].forEach(li => detailsList.appendChild(li));
         detailsContainer.appendChild(detailsList);
         li.appendChild(detailsContainer);
+
+        toggleDetailsBtn.addEventListener("click", () => {
+            detailsContainer.style.display = detailsContainer.style.display === "block" ?
+                                             "none" :
+                                             "block";
+            toggleDetailsBtn.textContent = toggleDetailsBtn.textContent === "▼" ?
+                                            "▲" :
+                                            "▼";
+        });
 
         return li;
     }
