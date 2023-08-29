@@ -27,7 +27,7 @@ export const Todo = {
         const toggleDetailsBtn = document.createElement("button");
         toggleDetailsBtn.innerText = "▼";
 
-        [titleP, checkbox, toggleDetailsBtn].forEach(el => projectContainer.appendChild(el));
+        [titleP, toggleDetailsBtn, checkbox].forEach(el => projectContainer.appendChild(el));
         li.appendChild(projectContainer);
         
         const descriptionLi = document.createElement("li");
