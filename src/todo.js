@@ -39,8 +39,7 @@ export const Todo = {
         
         const detailsContainer = document.createElement("div");
         detailsContainer.classList.add("details-container");
-        // For some reason it is "" by default
-        detailsContainer.style.display = "block";
+        detailsContainer.style.display = "none";
         const detailsList = document.createElement("ul");
 
         [descriptionLi, dueDateLi, priorityLi].forEach(li => detailsList.appendChild(li));
