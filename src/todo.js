@@ -22,12 +22,16 @@ export const Todo = {
 
         const titleP = document.createElement("p");
         titleP.innerText = this.title;
+        const editBtn = document.createElement("button");
+        editBtn.innerText = "✎";
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
         const toggleDetailsBtn = document.createElement("button");
         toggleDetailsBtn.innerText = "▼";
 
-        [titleP, toggleDetailsBtn, checkbox].forEach(el => projectContainer.appendChild(el));
+        [titleP, editBtn, toggleDetailsBtn, checkbox].forEach(el => {
+            projectContainer.appendChild(el)
+        });
         li.appendChild(projectContainer);
         
         const descriptionLi = document.createElement("li");
