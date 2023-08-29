@@ -23,3 +23,12 @@ sidebarController.populateSidebar();
 // Select and click first project button to update main
 // content and update current project index
 document.querySelector(".project-button").click();
+
+// Direction:
+// Skip editing the details for now...
+// And lets just work on the date for the todos
+// Currently inside driver script it is from Date.now()
+// and from form it is from date input.
+// Unify the format (like dd-MMMM-YYYY)
+// For every project, it should be nice to show them
+// according to... (priority, name, deadline, or created date)
