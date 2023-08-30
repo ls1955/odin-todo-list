@@ -1,11 +1,11 @@
-.project-container {
+.todo-nav {
     display: flex;
     max-width: 400px;
     justify-content: flex-end;
     align-items: center;
 }
 
-.project-container > p {
+.todo-nav > p {
     flex: 1;
     text-align: left;
 }

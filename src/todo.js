@@ -15,46 +15,17 @@ export const Todo = {
         return todo;
     },
     toListItem() {
-        const li = document.createElement("li");
+        const template = document.querySelector("#todo-template");
+        const result = template.content.cloneNode(true);
 
-        const projectContainer = document.createElement("div");
-        projectContainer.classList.add("project-container");
+        result.querySelector(".todo-title").textContent = this.title;
 
-        const titleP = document.createElement("p");
-        titleP.innerText = this.title;
-        const editBtn = document.createElement("button");
-        editBtn.innerText = "✎";
-        const checkbox = document.createElement("input");
-        checkbox.type = "checkbox";
-        const toggleDetailsBtn = document.createElement("button");
-        toggleDetailsBtn.innerText = "▼";
-
-        [titleP, editBtn, toggleDetailsBtn, checkbox].forEach(el => {
-            projectContainer.appendChild(el)
-        });
-        li.appendChild(projectContainer);
+        result.querySelector(".description").innerText = this.description;
+        result.querySelector(".due-date").innerText = this.dueDate;
+        result.querySelector(".priority").innerText = this.priority;
         
-        const descriptionLi = document.createElement("li");
-        descriptionLi.innerText = this.description;
-        const dueDateLi = document.createElement("li");
-        dueDateLi.innerText = this.dueDate;
-        const priorityLi = document.createElement("li");
-        priorityLi.innerText = this.priority;
-        
-        const detailsContainer = document.createElement("div");
-        detailsContainer.classList.add("details-container");
-        detailsContainer.style.display = "none";
-        const detailsList = document.createElement("ul");
-
-        [descriptionLi, dueDateLi, priorityLi].forEach(li => detailsList.appendChild(li));
-        detailsContainer.appendChild(detailsList);
-        li.appendChild(detailsContainer);
-
-        checkbox.addEventListener("click", () => {
-            this.isCompleted = true;
-            this.parent.updateMainContent();
-        });
-
+        const detailsContainer = result.querySelector(".details-container");
+        const toggleDetailsBtn = result.querySelector(".toggle-details-button");
         toggleDetailsBtn.addEventListener("click", () => {
             detailsContainer.style.display = detailsContainer.style.display === "block" ?
                                              "none" :
@@ -64,6 +35,12 @@ export const Todo = {
                                             "▼";
         });
 
-        return li;
+        const checkbox = result.querySelector(".check-todo-button");
+        checkbox.addEventListener("click", () => {
+            this.isCompleted = true;
+            this.parent.updateMainContent();
+        });
+
+        return result;
     }
 };
