@@ -6,6 +6,24 @@
   <title>Odin Todolist</title>
 </head>
 <body>
+  <template id="todo-template">
+    <li>
+      <nav class="todo-nav">
+        <p class="todo-title"></p>
+        <button class="edit-button">✎</button>
+        <button class="toggle-details-button">▼</button>
+        <input class="check-todo-button" type="checkbox">
+      </nav>
+    </li>
+    <div class="details-container" style="display: none;">
+      <ul>
+        <li class="description"></li>
+        <li class="due-date"></li>
+        <li class="priority"></li>
+      </ul>
+    </div>
+  </template>
+
   <header><button class="show-create-todo-dialog-button">Create a new todo</button></header>
 
   <dialog class="create-todo-dialog">
