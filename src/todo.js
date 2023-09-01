@@ -43,8 +43,7 @@ export const Todo = {
 
         titleEditInput.value = this.title;
         descriptionEditInput.value = this.description;
-        // Commented out for now as author doesn't feel like working with date for now
-        // dueDate.value = this.dueDate;
+        dueDateEditInput.value = this.dueDate;
         priorityEditInput.value = this.priority;
 
         titleEditInput.addEventListener("input", () => {
@@ -57,8 +56,8 @@ export const Todo = {
             descriptionOutput.textContent = this.description;
         });
         dueDateEditInput.addEventListener("input", () => {
-            // this.dueDate = dueDateEditInput.value
-            // dueDateOutput.value = this.dueDate;
+            this.dueDate = dueDateEditInput.value;
+            dueDateOutput.textContent = this.dueDate;
         });
         priorityEditInput.addEventListener("input", () => {
             this.priority = priorityEditInput.value
