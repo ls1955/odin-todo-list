@@ -5,9 +5,11 @@ import { Todo } from "./todo.js";
 
 import "./style.css";
 
-let todoOne = Todo.new("Eat breakfast", "Eat some breakfast to begin the day", Date.now(), 3);
-let todoTwo = Todo.new("Study", "Study", Date.now(), 3);
-let todoThree = Todo.new("Complete this project", "Complete this beautiful project.", Date.now(), 1);
+let today =new Date().toISOString().substring(0, 10);
+
+let todoOne = Todo.new("Eat breakfast", "Eat some breakfast to begin the day", today, 3);
+let todoTwo = Todo.new("Study", "Study", today, 3);
+let todoThree = Todo.new("Complete this project", "Complete this beautiful project.", today, 1);
 
 let defaultProject = Project.new("Default Project", [todoOne, todoTwo]);
 let projectOne = Project.new("The Odin Project", [todoThree]);
