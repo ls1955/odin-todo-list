@@ -14,7 +14,7 @@ export const Todo = {
 
         return todo;
     },
-    toListItem() {
+    toListItem: function() {
         const template = document.querySelector("#todo-template");
         const result = template.content.cloneNode(true);
 
