@@ -49,5 +49,11 @@ export const Project = {
         });
 
         return button;
+    },
+    toJSON: function() {
+        return {
+            name: this.name,
+            todos: this.todos.map(todo => todo.toJSON())
+        }
     }
 };
