@@ -30,38 +30,37 @@ export const Todo = {
 
         const editBtn = result.querySelector(".edit-button");
         const editContainer = result.querySelector(".edit-container");
-        editBtn.addEventListener("click", () => {
-            editContainer.style.display = editContainer.style.display === "block" ?
-                                          "none" :
-                                          "block";
-        });
-
+        
         const titleEditInput = editContainer.querySelector(".title-edit-input");
         const descriptionEditInput = editContainer.querySelector(".description-edit-input");
         const dueDateEditInput = editContainer.querySelector(".due-date-edit-input");
         const priorityEditInput = editContainer.querySelector(".priority-edit-input");
 
-        titleEditInput.value = this.title;
-        descriptionEditInput.value = this.description;
-        dueDateEditInput.value = this.dueDate;
-        priorityEditInput.value = this.priority;
+        editBtn.addEventListener("click", () => {
+            titleEditInput.value = this.title;
+            descriptionEditInput.value = this.description;
+            dueDateEditInput.value = this.dueDate;
+            priorityEditInput.value = this.priority;
+            editContainer.style.display = editContainer.style.display === "block" ?
+                                          "none" :
+                                          "block";
+        });
 
-        titleEditInput.addEventListener("input", () => {
+        const confirmEditBtn = editContainer.querySelector(".confirm-edit-button");
+
+        confirmEditBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+        
             this.title = titleEditInput.value;
             titleOutput.textContent = this.title;
-        });
-
-        descriptionEditInput.addEventListener("input", () => {
             this.description = descriptionEditInput.value;
             descriptionOutput.textContent = this.description;
-        });
-        dueDateEditInput.addEventListener("input", () => {
             this.dueDate = dueDateEditInput.value;
             dueDateOutput.textContent = this.dueDate;
-        });
-        priorityEditInput.addEventListener("input", () => {
             this.priority = priorityEditInput.value
             priorityOutput.value = this.priority;
+
+            // NOTE: Should save the latest details into the local storage
         });
 
         const detailsContainer = result.querySelector(".details-container");
