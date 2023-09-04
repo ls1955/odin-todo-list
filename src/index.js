@@ -26,9 +26,6 @@ sidebarController.populateSidebar();
 // content and update current project index
 document.querySelector(".project-button").click();
 
-// TODO:
-// Implement some object like LocalStorageHandler?
-
 // Optional?:
 // For every project, it should be nice to show them
 // according to... (priority, name, deadline, or created date)
