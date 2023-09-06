@@ -1,11 +1,12 @@
 import { Todo } from "./todo";
 
 export const DialogController = {
-    new: function(projects) {
+    new: function(projects, storageHandler = null) {
         const ctrller = Object.create(this);
         const dialog = document.querySelector(".create-todo-dialog");
 
         ctrller.projects = projects;
+        ctrller.storageHandler = storageHandler;
         ctrller.showBtn = document.querySelector(".show-create-todo-dialog-button");
         ctrller.dialog = dialog;
         ctrller.form = dialog.querySelector("form");
@@ -39,6 +40,7 @@ export const DialogController = {
 
         this.projects[index].push(todo);
         this.projects[index].updateMainContent();
+        this.storageHandler.updateStorage();
 
         this.form.reset();
         this.dialog.close();
