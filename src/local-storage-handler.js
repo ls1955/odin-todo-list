@@ -33,12 +33,10 @@ export const LocalStorageHandler = {
         let defaultTodoOne = Todo.new("Sleep", "Go to bed early tonight.", today, 3);
         let defaultTodoTwo = Todo.new("Live healthy", "Be kind to myself.", today, 3);
         let defaultProject = Project.new("Life", [defaultTodoOne, defaultTodoTwo]);
-
-        localStorage.setItem(
-            "odin-todo-list-projects",
-            JSON.stringify([defaultProject.toJSON()])
-        );
+        
         this.projects.push(defaultProject);
+
+        this.updateStorage();
     },
     buildFromLocalStorage() {
         JSON.parse(localStorage.getItem("odin-todo-list-projects")).forEach(projectData => {
@@ -55,5 +53,10 @@ export const LocalStorageHandler = {
             });
             this.projects.push(project);
         });
+    },
+    updateStorage: function() {
+        let projectsString = JSON.stringify(this.projects.map(project => project.toJSON()));
+
+        localStorage.setItem("odin-todo-list-projects", projectsString);
     }
 };
