@@ -42,7 +42,7 @@ export const SidebarController = {
             return;
         }
 
-        this.projects.push(Project.new(newProjectName));
+        this.projects.push(Project.new(newProjectName, this.storageHandler));
         this.storageHandler.updateStorage();
         // TODO: Should focus index on latest project
         this.form.reset();

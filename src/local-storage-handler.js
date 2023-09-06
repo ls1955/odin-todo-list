@@ -34,7 +34,7 @@ export const LocalStorageHandler = {
     },
     buildFromLocalStorage() {
         JSON.parse(localStorage.getItem("odin-todo-list-projects")).forEach(projectData => {
-            let project = Project.new(projectData["name"]);
+            let project = Project.new(projectData["name"], this);
 
             projectData["todos"].forEach(todoData => {
                 let todo = Todo.new(

@@ -1,9 +1,10 @@
 export const Project = {
-    new: function(name, todos = []) {
+    new: function(name, storageHandler = null, todos = []) {
         const project = Object.create(this);
 
         project.name = name;
         project.todos = [];
+        project.storageHandler = storageHandler;
         todos.forEach(todo => project.push(todo));
 
         return project;
@@ -35,6 +36,8 @@ export const Project = {
 
             main.appendChild(ul);
         }
+
+        this.storageHandler.updateStorage();
     },
     toButton: function() {
         const button = document.createElement("button");
