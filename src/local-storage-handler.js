@@ -31,7 +31,7 @@ export const LocalStorageHandler = {
         let today = new Date().toISOString().substring(0, 10);
 
         let defaultTodoOne = Todo.new("Sleep", "Go to bed early tonight.", today, 3);
-        let defaultTodoTwo = Todo.new("Live healthy", "Be kind to myself", today, 3);
+        let defaultTodoTwo = Todo.new("Live healthy", "Be kind to myself.", today, 3);
         let defaultProject = Project.new("Life", [defaultTodoOne, defaultTodoTwo]);
 
         localStorage.setItem(
