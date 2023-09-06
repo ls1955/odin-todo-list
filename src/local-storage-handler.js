@@ -19,13 +19,7 @@ export const LocalStorageHandler = {
         }
 
         DialogController.new(this.projects);
-        SidebarController.new(this.projects).populateSidebar();
-    },
-    push: function(project) {
-        // push the project json into localstorage
-    },
-    update: function(project) {
-        // find the project in localstorage, then update it
+        SidebarController.new(this.projects, this).populateSidebar();
     },
     buildDefaultProject: function() {
         let today = new Date().toISOString().substring(0, 10);

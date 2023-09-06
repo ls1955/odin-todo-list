@@ -2,11 +2,12 @@ import { Project } from "./project";
 
 // A controller that handle all the event related to project sidebar
 export const SidebarController = {
-    new: function(projects) {
+    new: function(projects, storageHandler = null) {
         const ctrller = Object.create(this);
         const dialog = document.querySelector(".create-project-dialog");
 
         ctrller.projects = projects;
+        ctrller.storageHandler = storageHandler;
         ctrller.projectsContainer = document.querySelector(".projects-container");
         ctrller.sidebar = document.querySelector(".projects-sidebar");
         ctrller.dialog = dialog;
@@ -42,6 +43,7 @@ export const SidebarController = {
         }
 
         this.projects.push(Project.new(newProjectName));
+        this.storageHandler.updateStorage();
         // TODO: Should focus index on latest project
         this.form.reset();
         this.dialog.close();
