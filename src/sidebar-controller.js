@@ -12,9 +12,10 @@ export const SidebarController = {
         ctrller.sidebar = document.querySelector(".projects-sidebar");
         ctrller.dialog = dialog;
         ctrller.form = dialog.querySelector("form");
+        ctrller.nameInput = dialog.querySelector("input");
+        ctrller.errMsgContainer = dialog.querySelector(".error-message-container");
         ctrller.cancelBtn = dialog.querySelector(".cancel-button");
         ctrller.createBtn = dialog.querySelector(".create-button");
-        ctrller.nameInput =dialog.querySelector("input");
         ctrller.showDialogBtn = document.querySelector(".create-project-button");
 
         ctrller.showDialogBtn.addEventListener("click", () => ctrller.dialog.show());
@@ -24,23 +25,25 @@ export const SidebarController = {
         });
         ctrller.createBtn.addEventListener("click", (e) => {
             e.preventDefault();
-            ctrller.createAndInsertProject();
+            ctrller.createAndInsertProject(e);
         });
 
         return ctrller;
     },
-    createAndInsertProject: function() {
+    createAndInsertProject: function(e) {
         let newProjectName = this.nameInput.value;
 
         if (newProjectName === "") {
-            // Invalid project name, output some message with it
+            this.errMsgContainer.textContent = "empty project name";
             return;
         }
 
         if (this.projects.some(project => project.name === newProjectName )) {
-            // Same project name already exist, output some message with it;
+            this.errMsgContainer.textContent = "existed project name";
             return;
         }
+
+        this.errMsgContainer.textContent = "";
 
         this.projects.push(Project.new(newProjectName, this.storageHandler));
         this.storageHandler.updateStorage();
