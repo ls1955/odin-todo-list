@@ -44,12 +44,11 @@ export const SidebarController = {
 
         this.projects.push(Project.new(newProjectName, this.storageHandler));
         this.storageHandler.updateStorage();
-        // TODO: Should focus index on latest project
         this.form.reset();
         this.dialog.close();
-        this.populateSidebar();
+        this.populateSidebar(true);
     },
-    populateSidebar: function() {
+    populateSidebar: function(hadJustCreateNewProject = false) {
         this.projectsContainer.innerHTML = "";
 
         this.projects.forEach((project, index) => {
@@ -61,6 +60,12 @@ export const SidebarController = {
             projectButton.classList.add("project-button");
 
             this.projectsContainer.appendChild(projectButton);
+
+            // It kind of make sense to focus on newly created project
+            // so we could add todo into it, right?
+            if (hadJustCreateNewProject && project === this.projects.at(-1)) {
+                projectButton.click();
+            }
         });
     }
 };
