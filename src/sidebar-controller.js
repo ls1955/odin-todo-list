@@ -17,6 +17,7 @@ export const SidebarController = {
         ctrller.cancelBtn = dialog.querySelector(".cancel-button");
         ctrller.createBtn = dialog.querySelector(".create-button");
         ctrller.showDialogBtn = document.querySelector(".create-project-button");
+        ctrller.deleteProjectBtn = document.querySelector(".delete-project-button");
 
         ctrller.showDialogBtn.addEventListener("click", () => ctrller.dialog.show());
         ctrller.cancelBtn.addEventListener("click", () => {
@@ -26,6 +27,13 @@ export const SidebarController = {
         ctrller.createBtn.addEventListener("click", (e) => {
             e.preventDefault();
             ctrller.createAndInsertProject(e);
+        });
+        ctrller.deleteProjectBtn.addEventListener("click", () => {
+            let deleteIndex = document.querySelector(".current-project-index-holder").dataset.index;
+
+            ctrller.projects.splice(deleteIndex, 1);
+            ctrller.populateSidebar(false, true);
+            ctrller.storageHandler.updateStorage();
         });
 
         return ctrller;
@@ -51,7 +59,7 @@ export const SidebarController = {
         this.dialog.close();
         this.populateSidebar(true);
     },
-    populateSidebar: function(hadJustCreateNewProject = false) {
+    populateSidebar: function(hadJustCreateNewProject = false, hadJustDeleteProject = false) {
         this.projectsContainer.innerHTML = "";
 
         this.projects.forEach((project, index) => {
@@ -67,6 +75,8 @@ export const SidebarController = {
             // It kind of make sense to focus on newly created project
             // so we could add todo into it, right?
             if (hadJustCreateNewProject && project === this.projects.at(-1)) {
+                projectButton.click();
+            } else if (hadJustDeleteProject && index === 0) {
                 projectButton.click();
             }
         });
