@@ -59,8 +59,6 @@ export const Todo = {
             dueDateOutput.textContent = this.dueDate;
             this.priority = priorityEditInput.value
             priorityOutput.value = this.priority;
-
-            // NOTE: Should save the latest details into the local storage
         });
 
         const detailsContainer = result.querySelector(".details-container");
@@ -82,6 +80,7 @@ export const Todo = {
 
         return result;
     },
+    // Name might be misleading, perhaps something like #JSONFriendlyFormat ?
     toJSON: function() {
         return {
             title: this.title,
