@@ -19,23 +19,6 @@ export const SidebarController = {
         ctrller.showDialogBtn = document.querySelector(".create-project-button");
         ctrller.deleteProjectBtn = document.querySelector(".delete-project-button");
 
-        ctrller.showDialogBtn.addEventListener("click", () => ctrller.dialog.show());
-        ctrller.cancelBtn.addEventListener("click", () => {
-            ctrller.form.reset();
-            ctrller.dialog.close();
-        });
-        ctrller.createBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-            ctrller.createAndInsertProject(e);
-        });
-        ctrller.deleteProjectBtn.addEventListener("click", () => {
-            let deleteIndex = document.querySelector(".current-project-index-holder").dataset.index;
-
-            ctrller.projects.splice(deleteIndex, 1);
-            ctrller.populateSidebar(false, true);
-            ctrller.storageHandler.updateStorage();
-        });
-
         return ctrller;
     },
     createAndInsertProject: function(e) {
@@ -65,8 +48,6 @@ export const SidebarController = {
         this.projects.forEach((project, index) => {
             let projectButton = project.toButton();
 
-            // TODO: Include a delete button for every projectButton?
-
             projectButton.dataset.index = index;
             projectButton.classList.add("project-button");
 
@@ -79,6 +60,24 @@ export const SidebarController = {
             } else if (hadJustDeleteProject && index === 0) {
                 projectButton.click();
             }
+        });
+    },
+    setDOMsEventListener: function() {
+        this.showDialogBtn.addEventListener("click", () => this.dialog.show());
+        this.cancelBtn.addEventListener("click", () => {
+            this.form.reset();
+            this.dialog.close();
+        });
+        this.createBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            this.createAndInsertProject(e);
+        });
+        this.deleteProjectBtn.addEventListener("click", () => {
+            let deleteIndex = document.querySelector(".current-project-index-holder").dataset.index;
+
+            this.projects.splice(deleteIndex, 1);
+            this.populateSidebar(false, true);
+            this.storageHandler.updateStorage();
         });
     }
 };

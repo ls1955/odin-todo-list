@@ -9,6 +9,7 @@ storageHandler.init();
 let dialogController = DialogController.new(storageHandler.projects, storageHandler);
 dialogController.setDOMsEventListener();
 let sidebarController = SidebarController.new(storageHandler.projects, storageHandler);
+sidebarController.setDOMsEventListener();
 sidebarController.populateSidebar();
 
 // Select and click first project button to update main
