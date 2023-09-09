@@ -17,7 +17,10 @@ export const DialogController = {
         ctrller.dateInput = dialog.querySelector(".date-input");
         ctrller.priorityInput = dialog.querySelector(".priority-input");
 
-        ctrller.showBtn.addEventListener("click", () => ctrller.dialog.show());
+        ctrller.showBtn.addEventListener("click", () => {
+            ctrller.dateInput.value = new Date().toISOString().slice(0, 10);
+            ctrller.dialog.show()
+        });
         ctrller.cancelBtn.addEventListener("click", () => {
             ctrller.form.reset();
             ctrller.dialog.close()
