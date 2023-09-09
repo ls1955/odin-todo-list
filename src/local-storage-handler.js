@@ -18,7 +18,9 @@ export const LocalStorageHandler = {
             this.buildDefaultProject();
         }
 
-        DialogController.new(this.projects, this);
+        // TODO: Code smell
+        let dialogController = DialogController.new(this.projects, this);
+        dialogController.setDOMsEventListener();
         SidebarController.new(this.projects, this).populateSidebar();
     },
     buildDefaultProject: function() {

@@ -17,19 +17,6 @@ export const DialogController = {
         ctrller.dateInput = dialog.querySelector(".date-input");
         ctrller.priorityInput = dialog.querySelector(".priority-input");
 
-        ctrller.showBtn.addEventListener("click", () => {
-            ctrller.dateInput.value = new Date().toISOString().slice(0, 10);
-            ctrller.dialog.show()
-        });
-        ctrller.cancelBtn.addEventListener("click", () => {
-            ctrller.form.reset();
-            ctrller.dialog.close()
-        });
-        ctrller.createBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-            ctrller.createAndInsertTodo();
-        });
-
         return ctrller;
     },
     createAndInsertTodo: function() {
@@ -44,8 +31,21 @@ export const DialogController = {
         this.projects[index].push(todo);
         this.projects[index].updateMainContent();
         this.storageHandler.updateStorage();
-
-        this.form.reset();
-        this.dialog.close();
+    },
+    setDOMsEventListener: function() {
+        this.showBtn.addEventListener("click", () => {
+            this.dateInput.value = new Date().toISOString().slice(0, 10);
+            this.dialog.show()
+        });
+        this.cancelBtn.addEventListener("click", () => {
+            this.form.reset();
+            this.dialog.close()
+        });
+        this.createBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            this.createAndInsertTodo();
+            this.form.reset();
+            this.dialog.close();
+        });
     }
 };
