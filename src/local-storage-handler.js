@@ -17,11 +17,6 @@ export const LocalStorageHandler = {
         } else {
             this.buildDefaultProject();
         }
-
-        // TODO: Code smell
-        let dialogController = DialogController.new(this.projects, this);
-        dialogController.setDOMsEventListener();
-        SidebarController.new(this.projects, this).populateSidebar();
     },
     buildDefaultProject: function() {
         let today = new Date().toISOString().substring(0, 10);
