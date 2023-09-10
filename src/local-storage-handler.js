@@ -1,24 +1,22 @@
-import { DialogController } from "./dialog-controller";
 import { Project } from "./project";
-import { SidebarController } from "./sidebar-controller";
 import { Todo } from "./todo";
 
 export const LocalStorageHandler = {
-    new: function() {
+    new() {
         const handler = Object.create(this);
 
         handler.projects = [];
 
         return handler;
     },
-    init: function() {
+    init() {
         if (localStorage.getItem("odin-todo-list-projects") != null) {
             this.buildFromLocalStorage();
         } else {
             this.buildDefaultProject();
         }
     },
-    buildDefaultProject: function() {
+    buildDefaultProject() {
         let today = new Date().toISOString().substring(0, 10);
 
         let defaultTodoOne = Todo.new("Sleep", "Go to bed early tonight.", today, 3);
@@ -45,7 +43,7 @@ export const LocalStorageHandler = {
             this.projects.push(project);
         });
     },
-    updateStorage: function() {
+    updateStorage() {
         let projectsString = JSON.stringify(this.projects.map(project => project.toJSONFriendlyObject()));
 
         localStorage.setItem("odin-todo-list-projects", projectsString);

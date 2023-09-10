@@ -1,7 +1,7 @@
 import { Todo } from "./todo";
 
 export const DialogController = {
-    new: function(projects, storageHandler = null) {
+    new(projects, storageHandler = null) {
         const ctrller = Object.create(this);
         const dialog = document.querySelector(".create-todo-dialog");
 
@@ -19,7 +19,7 @@ export const DialogController = {
 
         return ctrller;
     },
-    createAndInsertTodo: function() {
+    createAndInsertTodo() {
         let title = this.titleInput.value;
         let description = this.descriptionInput.value;
         let dueDate = this.dateInput.value;
@@ -32,7 +32,7 @@ export const DialogController = {
         this.projects[index].updateMainContent();
         this.storageHandler.updateStorage();
     },
-    setDOMsEventListener: function() {
+    setDOMsEventListener() {
         this.showBtn.addEventListener("click", () => {
             this.dateInput.value = new Date().toISOString().slice(0, 10);
             this.dialog.show()

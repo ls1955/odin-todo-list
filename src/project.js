@@ -1,5 +1,5 @@
 export const Project = {
-    new: function(name, storageHandler = null, todos = []) {
+    new(name, storageHandler = null, todos = []) {
         const project = Object.create(this);
 
         project.name = name;
@@ -9,13 +9,13 @@ export const Project = {
 
         return project;
     },
-    push: function(todo) {
+    push(todo) {
         // Child will inform parent to kill
         // itself when it time has come
         todo.parent = this;
         this.todos.push(todo);
     },
-    updateMainContent: function() {
+    updateMainContent() {
         this.todos = this.todos.filter(todo => !todo.isCompleted);
 
         const main = document.querySelector(".todo-list-container");
@@ -39,7 +39,7 @@ export const Project = {
 
         this.storageHandler.updateStorage();
     },
-    toButton: function() {
+    toButton() {
         const button = document.createElement("button");
 
         button.innerText = this.name;
@@ -53,7 +53,7 @@ export const Project = {
 
         return button;
     },
-    toJSONFriendlyObject: function() {
+    toJSONFriendlyObject() {
         return {
             name: this.name,
             todos: this.todos.map(todo => todo.toJSONFriendlyObject())

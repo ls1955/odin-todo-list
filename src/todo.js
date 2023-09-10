@@ -1,5 +1,5 @@
 export const Todo = {
-    new: function(title, description, dueDate, priority) {
+    new(title, description, dueDate, priority) {
         const todo = Object.create(this);
 
         todo.title = title;
@@ -14,7 +14,7 @@ export const Todo = {
 
         return todo;
     },
-    toListItem: function() {
+    toListItem() {
         const template = document.querySelector("#todo-template");
         const result = template.content.cloneNode(true);
 
@@ -71,7 +71,7 @@ export const Todo = {
 
         return result;
     },
-    toJSONFriendlyObject: function() {
+    toJSONFriendlyObject() {
         return {
             title: this.title,
             description: this.description,

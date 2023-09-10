@@ -2,7 +2,7 @@ import { Project } from "./project";
 
 // A controller that handle all the event related to project sidebar
 export const SidebarController = {
-    new: function(projects, storageHandler = null) {
+    new(projects, storageHandler = null) {
         const ctrller = Object.create(this);
         const dialog = document.querySelector(".create-project-dialog");
 
@@ -21,7 +21,7 @@ export const SidebarController = {
 
         return ctrller;
     },
-    createAndInsertProject: function(e) {
+    createAndInsertProject(e) {
         let newProjectName = this.nameInput.value;
 
         if (newProjectName === "") {
@@ -42,7 +42,7 @@ export const SidebarController = {
         this.dialog.close();
         this.populateSidebar(true);
     },
-    populateSidebar: function(hadJustCreateNewProject = false, hadJustDeleteProject = false) {
+    populateSidebar(hadJustCreateNewProject = false, hadJustDeleteProject = false) {
         this.projectsContainer.innerHTML = "";
 
         this.projects.forEach((project, index) => {
@@ -62,7 +62,7 @@ export const SidebarController = {
             }
         });
     },
-    setDOMsEventListener: function() {
+    setDOMsEventListener() {
         this.showDialogBtn.addEventListener("click", () => this.dialog.show());
         this.cancelBtn.addEventListener("click", () => {
             this.form.reset();
