@@ -59,6 +59,8 @@ export const Todo = {
             dueDateOutput.textContent = this.dueDate;
             this.priority = priorityEditInput.value
             priorityOutput.value = this.priority;
+
+            editContainer.style.display = "none";
         });
 
         const detailsContainer = result.querySelector(".details-container");
