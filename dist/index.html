@@ -7,10 +7,17 @@
 </head>
 <body>
   <template id="todo-template">
-    <nav class="todo-nav">
+    <nav class="todo-nav" style="display: flex; align-items: flex-start;">
+      <details>
+        <summary class="todo-title"></summary>
+        <ul class="details-container">
+          <li class="description"></li>
+          <li class="due-date"></li>
+          <li class="priority"></li>
+        </ul>
+      </details>
       <p class="todo-title"></p>
       <button class="edit-button">✎</button>
-      <button class="toggle-details-button">▼</button>
       <input class="check-todo-button" type="checkbox">
     </nav>
     <form class="edit-container" style="display: none;">
@@ -28,13 +35,6 @@
       </label>
       <button class="confirm-edit-button">Confirm Edit</button>
     </form>
-    <div class="details-container" style="display: none;">
-      <ul>
-        <li class="description"></li>
-        <li class="due-date"></li>
-        <li class="priority"></li>
-      </ul>
-    </div>
   </template>
 
   <header><button class="show-create-todo-dialog-button">Create a new todo</button></header>

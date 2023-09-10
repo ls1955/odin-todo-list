@@ -63,17 +63,6 @@ export const Todo = {
             editContainer.style.display = "none";
         });
 
-        const detailsContainer = result.querySelector(".details-container");
-        const toggleDetailsBtn = result.querySelector(".toggle-details-button");
-        toggleDetailsBtn.addEventListener("click", () => {
-            detailsContainer.style.display = detailsContainer.style.display === "block" ?
-                                             "none" :
-                                             "block";
-            toggleDetailsBtn.textContent = toggleDetailsBtn.textContent === "▼" ?
-                                            "▲" :
-                                            "▼";
-        });
-
         const checkbox = result.querySelector(".check-todo-button");
         checkbox.addEventListener("click", () => {
             this.isCompleted = true;
