@@ -18,20 +18,20 @@
       </details>
       <p class="todo-title"></p>
       <button class="edit-button">✎</button>
-      <input class="check-todo-button" type="checkbox">
+      <input class="check-todo-button" type="checkbox" name="check-todo-button">
     </nav>
     <form class="edit-container" style="display: none;">
       <label>
-        Title: <input type="text" class="title-edit-input">
+        Title: <input type="text" class="title-edit-input" name="todo-title">
       </label>
       <label>
-        Description: <input type="text" class="description-edit-input">
+        Description: <input type="text" class="description-edit-input" name="todo-description">
       </label>
       <label>
-        Due date: <input type="date" class="due-date-edit-input">
+        Due date: <input type="date" class="due-date-edit-input" name="todo-due-date">
       </label>
       <label>
-        Priority: <input type="number" min="1" max="3" class="priority-edit-input">
+        Priority: <input type="number" min="1" max="3" class="priority-edit-input" name="todo-priority">
       </label>
       <button class="confirm-edit-button">Confirm Edit</button>
     </form>
@@ -44,22 +44,22 @@
       <h1>Create a new todo</h1>
       <p>
         <label>
-          Title: <input type="text" required class="title-input">
+          Title: <input type="text" required class="title-input" name="todo-title">
         </label>
       </p>
       <p>
         <label>
-          Description: <input type="text" required class="description-input">
+          Description: <input type="text" required class="description-input" name="todo-description">
         </label>
       </p>
       <p>
         <label>
-          Due date: <input type="date" required class="date-input">
+          Due date: <input type="date" required class="date-input" name="todo-due-date">
         </label>
       </p>
       <p>
         <label>
-          Priority (Scale of 1 to 3): <input type="number" min="1" max="3" value="1" required class="priority-input">
+          Priority (Scale of 1 to 3): <input type="number" min="1" max="3" value="1" required class="priority-input" name="toggle-priority">
         </label>
       </p>
       <div class="buttons-container">
@@ -74,7 +74,7 @@
       <h1>Create a new project</h1>
       <p>
         <label>
-          Name: <input type="text" required class="name-input">
+          Name: <input type="text" required class="name-input" id="project-name">
         </label>
         <div class="error-message-container"></div>
       </p>
