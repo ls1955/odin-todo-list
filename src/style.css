@@ -1,8 +1,7 @@
 .todo-nav {
     display: flex;
-    max-width: 400px;
-    justify-content: flex-end;
-    align-items: center;
+    max-width: 800px;
+    align-items: flex-start;
 }
 
 .todo-nav > p {
