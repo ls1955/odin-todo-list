@@ -16,6 +16,10 @@ sidebarController.populateSidebar();
 // content and update current project index
 document.querySelector(".project-button")?.click();
 
-// Optional?:
+// OPTIONAL?:
 // For every project, it should be nice to show them
 // according to... (priority, name, deadline, or created date)
+
+// FIX?:
+// In index.html, create/edit todo form are identical
+// DRY it up?
