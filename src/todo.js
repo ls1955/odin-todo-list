@@ -71,8 +71,7 @@ export const Todo = {
 
         return result;
     },
-    // Name might be misleading, perhaps something like #JSONFriendlyFormat ?
-    toJSON: function() {
+    toJSONFriendlyObject: function() {
         return {
             title: this.title,
             description: this.description,

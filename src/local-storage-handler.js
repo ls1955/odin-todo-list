@@ -46,7 +46,7 @@ export const LocalStorageHandler = {
         });
     },
     updateStorage: function() {
-        let projectsString = JSON.stringify(this.projects.map(project => project.toJSON()));
+        let projectsString = JSON.stringify(this.projects.map(project => project.toJSONFriendlyObject()));
 
         localStorage.setItem("odin-todo-list-projects", projectsString);
     }

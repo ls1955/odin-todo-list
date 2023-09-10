@@ -53,10 +53,10 @@ export const Project = {
 
         return button;
     },
-    toJSON: function() {
+    toJSONFriendlyObject: function() {
         return {
             name: this.name,
-            todos: this.todos.map(todo => todo.toJSON())
+            todos: this.todos.map(todo => todo.toJSONFriendlyObject())
         }
     }
 };
