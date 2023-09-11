@@ -6,22 +6,22 @@ export const SidebarController = {
         const ctrller = Object.create(this);
         const dialog = document.querySelector(".create-project-dialog");
 
-        ctrller.projects = projects;
-        ctrller.storageHandler = storageHandler;
-        ctrller.projectsContainer = document.querySelector(".projects-container");
-        ctrller.sidebar = document.querySelector(".projects-sidebar");
-        ctrller.dialog = dialog;
-        ctrller.form = dialog.querySelector("form");
-        ctrller.nameInput = dialog.querySelector("input");
-        ctrller.errMsgContainer = dialog.querySelector(".error-message-container");
-        ctrller.cancelBtn = dialog.querySelector(".cancel-button");
-        ctrller.createBtn = dialog.querySelector(".create-button");
-        ctrller.showDialogBtn = document.querySelector(".create-project-button");
-        ctrller.deleteProjectBtn = document.querySelector(".delete-project-button");
-
-        return ctrller;
+        return Object.assign(ctrller, {
+            projects,
+            storageHandler,
+            dialog,
+            projectsContainer : document.querySelector(".projects-container"),
+            sidebar : document.querySelector(".projects-sidebar"),
+            form : dialog.querySelector("form"),
+            nameInput : dialog.querySelector("input"),
+            errMsgContainer : dialog.querySelector(".error-message-container"),
+            cancelBtn : dialog.querySelector(".cancel-button"),
+            createBtn : dialog.querySelector(".create-button"),
+            showDialogBtn : document.querySelector(".create-project-button"),
+            deleteProjectBtn : document.querySelector(".delete-project-button")
+        });
     },
-    createAndInsertProject(e) {
+    createAndInsertProject() {
         let newProjectName = this.nameInput.value;
 
         if (newProjectName === "") {
@@ -70,7 +70,7 @@ export const SidebarController = {
         });
         this.createBtn.addEventListener("click", (e) => {
             e.preventDefault();
-            this.createAndInsertProject(e);
+            this.createAndInsertProject();
         });
         this.deleteProjectBtn.addEventListener("click", () => {
             let deleteIndex = document.querySelector(".current-project-index-holder").dataset.index;
