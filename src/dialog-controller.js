@@ -3,21 +3,22 @@ import { Todo } from "./todo";
 export const DialogController = {
     new(projects, storageHandler = null) {
         const ctrller = Object.create(this);
-        const dialog = document.querySelector(".create-todo-dialog");
 
-        ctrller.projects = projects;
-        ctrller.storageHandler = storageHandler;
-        ctrller.showBtn = document.querySelector(".show-create-todo-dialog-button");
-        ctrller.dialog = dialog;
-        ctrller.form = dialog.querySelector("form");
-        ctrller.cancelBtn = dialog.querySelector(".cancel-button");
-        ctrller.createBtn = dialog.querySelector(".create-button");
-        ctrller.titleInput = dialog.querySelector(".title-input");
-        ctrller.descriptionInput = dialog.querySelector(".description-input");
-        ctrller.dateInput = dialog.querySelector(".date-input");
-        ctrller.priorityInput = dialog.querySelector(".priority-input");
+        let dialog = document.querySelector(".create-todo-dialog");
 
-        return ctrller;
+        return Object.assign(ctrller, {
+            projects,
+            storageHandler,
+            dialog,
+            form : dialog.querySelector("form"),
+            cancelBtn : dialog.querySelector(".cancel-button"),
+            createBtn : dialog.querySelector(".create-button"),
+            titleInput : dialog.querySelector(".title-input"),
+            descriptionInput : dialog.querySelector(".description-input"),
+            dateInput : dialog.querySelector(".date-input"),
+            priorityInput : dialog.querySelector(".priority-input"),
+            showBtn : document.querySelector(".show-create-todo-dialog-button")
+        });
     },
     createAndInsertTodo() {
         let title = this.titleInput.value;
