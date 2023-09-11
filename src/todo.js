@@ -2,17 +2,17 @@ export const Todo = {
     new(title, description, dueDate, priority) {
         const todo = Object.create(this);
 
-        todo.title = title;
-        todo.description = description;
-        todo.dueDate = dueDate;
-        todo.priority = priority;
-        todo.isCompleted = false;
-        // Will be set by the parent later on.
-        // Useful when sending message to tell parent
-        // to remove itself when this.isCompleted
-        todo.parent = null;
-
-        return todo;
+        return Object.assign(todo, {
+            title,
+            description,
+            dueDate,
+            priority,
+            isCompleted: false,
+            // Will be set by the parent later on.
+            // Useful when sending message to tell parent
+            // to remove itself when this.isCompleted
+            parent: null
+        });
     },
     toListItem() {
         const template = document.querySelector("#todo-template");
